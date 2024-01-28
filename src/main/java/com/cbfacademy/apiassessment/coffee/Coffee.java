@@ -37,7 +37,7 @@ public class Coffee {
 	private String origin;
 
      /**
-	 * The origin of the coffee.
+	 * The sale of the coffee.
 	 */
 	private int sales;
 
