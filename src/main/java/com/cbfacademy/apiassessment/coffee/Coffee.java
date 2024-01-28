@@ -177,6 +177,12 @@ public class Coffee {
 	public void setSales(int sales) {
 		this.sales = sales;
 	}
+    
+    /**
+	 * Create toString method to allow us to print the
+     * string representation of the class. I have set it up 
+     * in JSON format as this is how I want my data to show.
+	 */
 
 	@Override
 	public String toString() {
