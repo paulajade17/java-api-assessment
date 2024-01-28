@@ -42,7 +42,7 @@ public class Coffee {
 	private int sales;
 
 	/**
-	 * Parameterised constructor to create an Coffee with specified details.
+	 * Parameterised constructor to create a coffee with specified details.
 	 *
 	 * @param name The name of the coffee.
 	 * @param description The description of the coffee.
@@ -62,7 +62,7 @@ public class Coffee {
 	}
 
 	/**
-	 * Get the ID of the Coffee.
+	 * Get the ID of the coffee.
 	 *
 	 * @return The unique identifier for the coffee.
 	 */
@@ -163,16 +163,16 @@ public class Coffee {
      /**
 	 * Get the sales of coffee.
 	 *
-	 * @return The origin of the coffee.
+	 * @return The sales of the coffee.
 	 */
 	public int getSales() {
 		return this.sales;
 	}
 
     /**
-	 * Set the origin of the coffee.
+	 * Set the sales of the coffee.
 	 *  
-	 * @param sales The origin of the coffee.
+	 * @param sales The sales of the coffee.
 	 */
 	public void setSales(int sales) {
 		this.sales = sales;
