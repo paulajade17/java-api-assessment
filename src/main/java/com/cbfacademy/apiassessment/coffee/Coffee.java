@@ -1,48 +1,25 @@
 package com.cbfacademy.apiassessment.coffee;
 import java.util.UUID;
 
-/**
- * The Coffee class represents a Coffee entity with details such as ID, name, description, price, brand, origin and sales.
- */
 public class Coffee {
 
-	/**
-	 * The unique identifier for the coffee.
-	 */
 	private final UUID id;
 
-	/*
-	 * The name of the coffee.
-	 */
 	private String name;
 
-	/**
-	 * A description of the coffee.
-	 */
 	private String description;
 
-	/**
-	 * The price of coffee.
-	 */
 	private double price;
 
-	/**
-	 * The brand of the coffee.
-	 */
 	private String brand;
 
-    /**
-	 * The origin of the coffee.
-	 */
 	private String origin;
 
-     /**
-	 * The sale of the coffee.
-	 */
 	private int sales;
 
 	/**
 	 * Parameterised constructor to create a coffee with specified details.
+	 * id is not included inside the parameters
 	 *
 	 * @param name The name of the coffee.
 	 * @param description The description of the coffee.
