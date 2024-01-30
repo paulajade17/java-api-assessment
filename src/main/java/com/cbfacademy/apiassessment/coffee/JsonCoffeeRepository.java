@@ -21,7 +21,7 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     private final Gson gson;
     private final Map<UUID, Coffee> database;
 
-    public JsonCoffeeRepository(@Value("database.json") String filePath) {
+    public JsonCoffeeRepository(@Value("src/main/resources/database.json") String filePath) {
         this.filePath = filePath;
         gson = new GsonBuilder()
                 .create();

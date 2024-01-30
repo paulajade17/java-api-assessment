@@ -48,6 +48,8 @@ public class DefaultCoffeeService implements CoffeeService{
         coffee.setDescription(updatedCoffee.getDescription());
         coffee.setPrice(updatedCoffee.getPrice());
         coffee.setBrand(updatedCoffee.getBrand());
+        coffee.setOrigin(updatedCoffee.getOrigin());
+        coffee.setSales(updatedCoffee.getSales());
 
         return repository.save(coffee);
     }
