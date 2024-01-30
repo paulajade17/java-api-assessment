@@ -2,10 +2,6 @@ package com.cbfacademy.apiassessment.core;
 
 import java.util.Optional;
 
-/**
- * Simplified, partial implementation of the {@link org.springframework.data.repository.CrudRepository} interface
- * @see <a href="https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html#repositories.definition-tuning">Repository docs</a>
- */
 public interface Repository<T, ID> extends org.springframework.data.repository.Repository<T, ID> {
 
     /**
