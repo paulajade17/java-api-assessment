@@ -1,1 +1,18 @@
-{}
+{
+    "7cb9eb36-ca3f-407b-9788-e00f60dbf2eb": {
+        "id": "7cb9eb36-ca3f-407b-9788-e00f60dbf2eb",
+        "name": "Add your name in the body",
+        "price": 0.0,
+        "origin": "Ethiopia",
+        "sales": 25
+    },
+    "b49052ac-5c92-4c31-ae23-a41df327996e": {
+        "id": "b49052ac-5c92-4c31-ae23-a41df327996e",
+        "name": "Orange delight",
+        "description": "Zesty orange flavoured coffee",
+        "price": 5.99,
+        "brand": "Timmys",
+        "origin": "Columbia",
+        "sales": 10
+    }
+}

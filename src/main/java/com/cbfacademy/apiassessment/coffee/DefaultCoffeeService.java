@@ -6,6 +6,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DefaultCoffeeService implements CoffeeService{
 
     private final CoffeeRepository repository;
