@@ -20,8 +20,7 @@ public class DefaultCoffeeService implements CoffeeService{
 
     //Instead of doing a for loop. I have used the iterableToList method to loop through the coffees
     //This makes the code shorter and cleaner
-
-
+    
     @Override
     public List<Coffee> getAllCoffees() {
         return iterableToList(repository.findAll());

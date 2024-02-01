@@ -15,7 +15,7 @@ public class Coffee {
 
 	private String origin;
 
-	private int sales;
+	//private int sales;
 
 	/**
 	 * Parameterised constructor to create a coffee with specified details.
