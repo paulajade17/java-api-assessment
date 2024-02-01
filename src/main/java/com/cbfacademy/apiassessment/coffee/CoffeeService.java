@@ -44,4 +44,7 @@ public interface CoffeeService {
      */
     void deleteCoffee(UUID id);
 
+
+    List<Coffee> sortCoffeesByPrice();
+
 }

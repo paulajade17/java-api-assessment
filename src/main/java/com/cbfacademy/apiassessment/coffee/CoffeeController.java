@@ -21,14 +21,18 @@ public class CoffeeController {
     }
 
     /**
-     * Retrieve a list of all coffees.
-     *
-     * @return A ResponseEntity containing a list of all coffees and HttpStatus OK if
-     *         successful.
+     * Retrieve a list of all coffees or retrieve the list by price
+     * Created an if statement if price is typed in search bar a list of prices will show
+     * if not a list of all coffees will show
      */
     @GetMapping
-    public ResponseEntity<List<Coffee>> getAllCoffees() {
+    public ResponseEntity<List<Coffee>> getAllCoffees(@RequestParam(required = false, defaultValue = "defaultSort") String sortBy) {
         List<Coffee> coffees = coffeeService.getAllCoffees();
+
+        if (sortBy.equals("price")) {
+            List<Coffee> sortedCoffees = coffeeService.sortCoffeesByPrice();
+            return new ResponseEntity<>(sortedCoffees, HttpStatus.OK);
+        }
 
         return new ResponseEntity<>(coffees, HttpStatus.OK);
     }
@@ -104,4 +108,6 @@ public class CoffeeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.cbfacademy.apiassessment.coffee;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -17,13 +18,35 @@ public class DefaultCoffeeService implements CoffeeService{
         this.repository = repository;
     }
 
+    //Instead of doing a for loop. I have used the iterableToList method to loop through the coffees
+    //This makes the code shorter and cleaner
+
 
     @Override
     public List<Coffee> getAllCoffees() {
         return iterableToList(repository.findAll());
-
-        
     }
+
+    public List<Coffee> sortCoffeesByPrice() {
+        List<Coffee> coffeeList = iterableToList(repository.findAll());
+
+        int n = coffeeList.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Compare adjacent elements and swap if they are in the wrong order
+                if (coffeeList.get(j).getPrice() > coffeeList.get(j+1).getPrice()) {
+                    // Swap
+                    System.out.println("swapping");
+                    Coffee temp = coffeeList.get(j);
+                    coffeeList.set(j, coffeeList.get(j + 1));
+                    coffeeList.set(j + 1, temp);
+                }
+            }
+        }
+
+        return coffeeList;
+    }
+
 
     @Override
     public Coffee getCoffee(UUID id) {
@@ -74,8 +97,7 @@ public class DefaultCoffeeService implements CoffeeService{
 
         return found;
     
-    
-}
+    }
 
 }
 
