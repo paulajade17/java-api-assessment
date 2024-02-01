@@ -1,0 +1,74 @@
+{
+    "7cb9eb36-ca3f-407b-9788-e00f60dbf2eb": {
+        "id": "7cb9eb36-ca3f-407b-9788-e00f60dbf2eb",
+        "name": "Latte",
+        "description": "delicious milky latte",
+        "price": 4.99,
+        "brand": "Coffee club",
+        "origin": "Ethiopia",
+        "sales": 25
+    },
+    "b49052ac-5c92-4c31-ae23-a41df327996e": {
+        "id": "b49052ac-5c92-4c31-ae23-a41df327996e",
+        "name": "Original",
+        "description": "A signature flavour",
+        "price": 4.99,
+        "brand": "Nescafe",
+        "origin": "Vietnam",
+        "sales": 100
+    },
+    "afe40205-0625-42f1-aa4e-b8a545afbba1": {
+        "id": "afe40205-0625-42f1-aa4e-b8a545afbba1",
+        "name": "Minty Madness",
+        "description": "delicious milky latte",
+        "price": 7.99,
+        "brand": "Coffee club",
+        "origin": "Peru",
+        "sales": 5
+    },
+    "46bcf09a-f6fc-4ac3-9961-1b133f6aa90e": {
+        "id": "46bcf09a-f6fc-4ac3-9961-1b133f6aa90e",
+        "name": "Spicy Sensation",
+        "description": "coffee infused with spicy chillies",
+        "price": 9.99,
+        "brand": "Coffee club",
+        "origin": "India",
+        "sales": 8
+    },
+    "8f99f192-7c14-4330-81a6-abac9ba07738": {
+        "id": "8f99f192-7c14-4330-81a6-abac9ba07738",
+        "name": "Chocolate Orange",
+        "description": "Choloatey coffee with hints of Orange",
+        "price": 4.99,
+        "brand": "Beanies",
+        "origin": "Peru",
+        "sales": 33
+    },
+    "9ba1f5e4-6b14-4828-95b4-4fa0bbeee0ac": {
+        "id": "9ba1f5e4-6b14-4828-95b4-4fa0bbeee0ac",
+        "name": "Dark Roast",
+        "description": "A strong and rich taste",
+        "price": 4.99,
+        "brand": "Nescafe",
+        "origin": "Indonesia",
+        "sales": 10
+    },
+    "510e9f44-7ee4-4f25-9964-22c0788d884e": {
+        "id": "510e9f44-7ee4-4f25-9964-22c0788d884e",
+        "name": "Americano",
+        "description": "Bold and dark flavours",
+        "price": 4.99,
+        "brand": "Nescafe",
+        "origin": "Brazil",
+        "sales": 7
+    },
+    "b04b2e41-f511-4879-b09f-03a1f5f50d0f": {
+        "id": "b04b2e41-f511-4879-b09f-03a1f5f50d0f",
+        "name": "Original",
+        "description": "A signature flavour",
+        "price": 2.99,
+        "brand": "Beanies",
+        "origin": "Columbia",
+        "sales": 20
+    }
+}

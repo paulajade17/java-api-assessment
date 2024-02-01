@@ -6,6 +6,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DefaultCoffeeService implements CoffeeService{
 
     private final CoffeeRepository repository;
@@ -45,6 +48,8 @@ public class DefaultCoffeeService implements CoffeeService{
         coffee.setDescription(updatedCoffee.getDescription());
         coffee.setPrice(updatedCoffee.getPrice());
         coffee.setBrand(updatedCoffee.getBrand());
+        coffee.setOrigin(updatedCoffee.getOrigin());
+        coffee.setSales(updatedCoffee.getSales());
 
         return repository.save(coffee);
     }
