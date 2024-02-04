@@ -10,7 +10,6 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -21,7 +20,7 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     private final Gson gson;
     private final Map<UUID, Coffee> database;
 
-    public JsonCoffeeRepository(@Value("src/main/resources/database.json") String filePath) {
+    public JsonCoffeeRepository(@Value("src/main/resources/static/database.json") String filePath) {
         this.filePath = filePath;
         gson = new GsonBuilder()
                 .create();
@@ -49,7 +48,7 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     }
 
     @Override
-    public Iterable<Coffee> findAll() {
+    public Collection<Coffee> findAll() {
         return database.values();
     }
 
@@ -58,12 +57,12 @@ public class JsonCoffeeRepository implements CoffeeRepository {
      * This helps avoid the need of explicit null checks
      */
     @Override
-    public Optional<Coffee> findById(UUID id) {
-        return Optional.ofNullable(database.get(id));
+    public Coffee findById(UUID id) {
+        return database.get(id);
     }
 
     @Override
-    public <S extends Coffee> S save(S entity) {
+    public Coffee save(Coffee entity) {
         database.put(entity.getId(), entity);
         saveDataToJson();
 
@@ -74,21 +73,6 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     public void deleteById(UUID id) {
         database.remove(id);
         saveDataToJson();
-    }
-
-    @Override
-    public Coffee searchByName(String name) {
-        return database.values().stream().filter(coffee -> coffee.getName().equals(name)).findFirst().orElse(null);
-    }
-
-    @Override
-    public List<Coffee> searchByBrand(String brand) {
-        return database.values().stream().filter(coffee -> coffee.getBrand().equals(brand)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Coffee> searchByOrigin(String origin) {
-        return database.values().stream().filter(coffee -> coffee.getOrigin().equals(origin)).collect(Collectors.toList());
     }
     
 }

@@ -1,38 +1,43 @@
 package com.cbfacademy.apiassessment.coffee;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.UUID;
 
-import com.cbfacademy.apiassessment.core.Repository;
+import com.cbfacademy.apiassessment.core.PersistenceException;
 
 /**
  * The CoffeeRepository interface defines the operations for managing coffees in the system.
  * It provides methods for retrieving, saving, updating, and deleting coffee records.
  */
-public interface CoffeeRepository extends Repository<Coffee, UUID> {
+public interface CoffeeRepository {
+
+    Collection<Coffee> findAll() throws PersistenceException;
 
     /**
-     * Searches for coffees where the name matches the provided string.
+     * Finds an entity by its unique identifier.
      *
-     * @param name the name of the coffee
-     * @return a coffee that matches the name
+     * @param id the identifier of the entity
+     * @return the found entity, or null if no such entity exists
      */
-    Coffee searchByName(String name);
+    Coffee findById(UUID id) throws IllegalArgumentException, PersistenceException;
 
     /**
-     * Searches for coffees where the brand's name matches the provided string.
+     * Saves an entity (new or existing) in the repository.
      *
-     * @param name the name of the coffee brand
-     * @return a list of coffees that match the brand's name
+     * @param entity the {@code <T>} to save
+     * @return the saved entity
      */
-    List<Coffee> searchByBrand(String brand);
+    Coffee save(Coffee entity) throws IllegalArgumentException, PersistenceException;
 
-     /**
-     * Searches for coffees where the origin name matches the provided string.
+    /**
+     * Deletes an entity from the repository based on its unique identifier.
      *
-     * @param name the origin of the coffee
-     * @return a list of coffees that match the origin
+     * @param id the id of the entity to delete
      */
-    List<Coffee> searchByOrigin(String origin);
+    void deleteById(UUID id) throws IllegalArgumentException, PersistenceException;
 
 }
+
+    
+
+

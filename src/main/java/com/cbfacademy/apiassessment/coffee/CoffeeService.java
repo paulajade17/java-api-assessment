@@ -47,4 +47,28 @@ public interface CoffeeService {
 
     List<Coffee> sortCoffeesByPrice();
 
+    /**
+     * Searches for coffees where the name matches the provided string.
+     *
+     * @param name the name of the coffee
+     * @return a coffee that matches the name
+     */
+    Coffee searchByName(String name) throws CoffeeNotFoundException;
+
+    /**
+     * Searches for coffees where the brand's name matches the provided string.
+     *
+     * @param name the name of the coffee brand
+     * @return a list of coffees that match the brand's name
+     */
+    List<Coffee> searchByBrand(String brand);
+
+     /**
+     * Searches for coffees where the origin name matches the provided string.
+     *
+     * @param name the origin of the coffee
+     * @return a list of coffees that match the origin
+     */
+    List<Coffee> searchByOrigin(String origin);
+
 }

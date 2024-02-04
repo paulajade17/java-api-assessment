@@ -2,40 +2,54 @@ package com.cbfacademy.apiassessment.coffee;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
+    /** 
+     * Service Annotation
+     * DefaultCoffeeService class implements the CoffeeService interface and has access to the methods once overriden.
+     * Line 24 creates a variable that acts as the data store (repository)
+     * This class has a constructor that takes a the repository variable as a parameter
+     * The constructor is responsible for initializing the repository field with the provided instance.
+     * This is known as dependency injection, where the dependencies 
+     * (in this case, the CoffeeRepository) are injected into the class through its constructor.
+     */
 @Service
-public class DefaultCoffeeService implements CoffeeService{
+
+public class DefaultCoffeeService implements CoffeeService {
 
     private final CoffeeRepository repository;
 
     public DefaultCoffeeService(CoffeeRepository repository) {
         this.repository = repository;
     }
+    /** 
+     * Overriden getAllCoffees method returns a list of Coffee objects.
+     * New Arraylist called coffeeList is created.
+     * For loop, loops coffee variable through findAll method from the repository.
+     * adds coffee variable to coffeeList and returns contents of coffeeList.
+     */
 
-    //Instead of doing a for loop. I have used the iterableToList method to loop through the coffees
-    //This makes the code shorter and cleaner
-    
     @Override
     public List<Coffee> getAllCoffees() {
-        return iterableToList(repository.findAll());
+        List<Coffee> coffeeList = new ArrayList<>();
+
+        for (Coffee coffee : repository.findAll()) {
+            coffeeList.add(coffee);
+        }
+
+        return coffeeList;
     }
 
     public List<Coffee> sortCoffeesByPrice() {
-        List<Coffee> coffeeList = iterableToList(repository.findAll());
+        List<Coffee> coffeeList = getAllCoffees();
 
         int n = coffeeList.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 // Compare adjacent elements and swap if they are in the wrong order
-                if (coffeeList.get(j).getPrice() > coffeeList.get(j+1).getPrice()) {
-                    // Swap
-                    System.out.println("swapping");
+                if (coffeeList.get(j).getPrice() > coffeeList.get(j + 1).getPrice()) {
                     Coffee temp = coffeeList.get(j);
                     coffeeList.set(j, coffeeList.get(j + 1));
                     coffeeList.set(j + 1, temp);
@@ -46,57 +60,65 @@ public class DefaultCoffeeService implements CoffeeService{
         return coffeeList;
     }
 
+     /** 
+     * Overriden getCoffee method returns a Coffee object and takes in paramater of UUID called id.
+     * New coffee variable points to getValidCoffee(id) method
+     * For loop, loops coffee variable through findAll method from the repository.
+     * adds coffee variable to coffeeList and returns contents of coffeeList.
+     */
 
     @Override
     public Coffee getCoffee(UUID id) {
-        Optional<Coffee> coffee = getValidCoffee(id);
+        Coffee coffee = repository.findById(id);
 
-        return coffee.orElseThrow();
+        if (coffee == null) {
+            throw new IllegalArgumentException("Coffee not found.");
+        }
+
+        return coffee;
     }
-
 
     @Override
     public Coffee createCoffee(Coffee coffee) {
         return repository.save(coffee);
-    
+
     }
 
     @Override
     public Coffee updateCoffee(UUID id, Coffee updatedCoffee) {
-        Optional<Coffee> found = getValidCoffee(id);
+        Coffee coffee = repository.findById(id);
 
-        Coffee coffee = found.orElseThrow();
+        if (coffee == null) {
+            throw new IllegalArgumentException("Coffee not found.");
+        }
         coffee.setName(updatedCoffee.getName());
         coffee.setDescription(updatedCoffee.getDescription());
         coffee.setPrice(updatedCoffee.getPrice());
         coffee.setBrand(updatedCoffee.getBrand());
         coffee.setOrigin(updatedCoffee.getOrigin());
-        coffee.setSales(updatedCoffee.getSales());
 
         return repository.save(coffee);
     }
 
     @Override
     public void deleteCoffee(UUID id) {
-        getValidCoffee(id);
+        repository.findById(id);
         repository.deleteById(id);
     }
-
-    protected <T> List<T> iterableToList(Iterable<T> iterable) {
-        return StreamSupport.stream(iterable.spliterator(), false)
-                .collect(Collectors.toList());
-    }
-
-    protected Optional<Coffee> getValidCoffee(UUID id) {
-        Optional<Coffee> found = repository.findById(id);
-
-        if (!found.isPresent()) {
-            throw new IllegalArgumentException("Coffee not found.");
-        }
-
-        return found;
+    // Methods I want to work on if I had more time 
     
+    public Coffee searchByName(String name) {
+        throw new CoffeeNotFoundException ("TODO");
+
     }
+    public List<Coffee> searchByBrand(String brand) 
+    {
+        throw new CoffeeNotFoundException ("TODO");
 
+    }
+    public List<Coffee> searchByOrigin(String origin)
+    {
+        throw new CoffeeNotFoundException ("TODO");
+
+    }
 }
-
