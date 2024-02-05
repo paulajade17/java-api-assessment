@@ -3,6 +3,12 @@ package com.cbfacademy.apiassessment.coffee;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * The CoffeeService interface defines operations for managing coffee entities in the system.
+ * It includes methods for retrieving, creating, updating, and deleting coffee records.
+ * Additionally, it provides methods for sorting and searching coffees based on different criteria.
+ */
+
 public interface CoffeeService {
 
     /**
@@ -43,5 +49,36 @@ public interface CoffeeService {
      * @param id The ID of the coffee to delete.
      */
     void deleteCoffee(UUID id);
+
+    /**
+     * Retrieve a sorted list of coffees based on price.
+     *
+     * @return A sorted list of coffees based on their price.
+     */
+    List<Coffee> sortCoffeesByPrice();
+
+    /**
+     * Searches for coffees where the name matches the provided string.
+     *
+     * @param name the name of the coffee
+     * @return a coffee that matches the name
+     */
+    //Coffee searchByName(String name) throws CoffeeNotFoundException;
+
+    /**
+     * Searches for coffees where the brand's name matches the provided string.
+     *
+     * @param name the name of the coffee brand
+     * @return a list of coffees that match the brand's name
+     */
+    //List<Coffee> searchByBrand(String brand);
+
+     /**
+     * Searches for coffees where the origin name matches the provided string.
+     *
+     * @param name the origin of the coffee
+     * @return a list of coffees that match the origin
+     */
+    //List<Coffee> searchByOrigin(String origin);
 
 }
