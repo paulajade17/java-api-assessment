@@ -170,20 +170,4 @@ public class DefaultCoffeeService implements CoffeeService {
     }
 
     
-    // Methods I want to work on if I had more time 
-    
-    // public Coffee searchByName(String name) {
-    //     throw new CoffeeNotFoundException ("TODO");
-
-    // }
-    // public List<Coffee> searchByBrand(String brand) 
-    // {
-    //     throw new CoffeeNotFoundException ("TODO");
-
-    // }
-    // public List<Coffee> searchByOrigin(String origin)
-    // {
-    //     throw new CoffeeNotFoundException ("TODO");
-
-    // }
 }
