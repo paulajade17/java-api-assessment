@@ -27,16 +27,14 @@ This API streamlines the management of coffee inventory for small business owner
 * Click on the green Code button and clone SSH the repository URL
 * Open your terminal or command prompt:
 
-For Mac
+**For Mac**
 
-```plaintext
 Click the Launchpad icon in the Dock, type Terminal in the search field, then click Terminal.
-```
-For Windows
 
-```plaintext
+**For Windows**
+
 Click start and search “Command Prompt”
-```
+
 
 * Cd into your desired directory i.e. Downloads
 * Run git clone command:
@@ -61,7 +59,7 @@ Run the following command to compile the project using Maven on mac:
 ```
 ./mvnw clean dependency:resolve
 ```
-If you are on a Windows machine, that will be:
+If you are on a Windows machine run this command:
 ```
 mvnw clean dependency:resolve
 ```
@@ -155,7 +153,7 @@ mvnw clean dependency:resolve
 ```
 ./mvnw spring-boot:run
 ```
-* Or this if you are on a Windows machine:
+* Or run this command if you are on a Windows machine:
 
 ```
 mvnw spring-boot:run
@@ -217,9 +215,9 @@ mvnw spring-boot:run
 ```
 ## **Access the API Online**
 
-The API is hosted online, and you can access it using Postman
+The API is hosted online, and you can access it using a web browser and Postman
 
-* Open your browser and navigate to the base URL: https:// localhost:8080/api/coffees
+* Open your browser and go to the following URL: https://localhost:8080/api/coffees
 * You should see a similar JSON objects like the one below
 * To view the data in a sorted order from lowest to highest price, please use the following URL: https://localhost:8080/api/coffees?sortBy=price
 ```
@@ -281,7 +279,7 @@ The API is hosted online, and you can access it using Postman
 |------------------------------------|-----------------------------------------------------------|-------------------------------------------------------|
 | `GET /api/coffees`                 | Retrieve a list of all coffees or retrieves list in a sorted order by price.      | `sortBy`: string (Optional, Default: "defaultSort")   |
 | `GET /api/coffees/{id}`            | Retrieve a specific coffee by its ID.                     | `id`: UUID (Required)                                |
-| `POST /api/coffees`                | Create a new coffee.                                      | `name`: string (Required),<br> `price`: double (Required), <br> `description`: string (Optional) <br> `origin`: string (Optional) |
+| `POST /api/coffees`                | Create a new coffee.                                      |  `coffee`: Coffee object (Request body) |
 | `PUT /api/coffees/{id}`            | Update an existing coffee by ID.                          | `id`: UUID (Required),<br> `updatedCoffee`: Coffee object (Request body) |
 | `DELETE /api/coffees/{id}`         | Delete a coffee by ID.                                    | `id`: UUID (Required)                                |
 
@@ -294,27 +292,31 @@ The API is hosted online, and you can access it using Postman
 * Select My Workspace
 * Select the + button and select create from template "REST API basics"
 
-### GET Request ###
+### GET Requests ###
 #### Get All Coffees ####
 * Set the request type to GET
 * Enter the URL for the endpoint https://localhost:8080/api/coffees
-* Click send to send the request and retrieve the list of coffees.
+* Click send to send the request and retrieve the list of coffees
 
 #### Get All Coffees sorted by price #### 
 * Set the request type to GET
 * Enter the URL for the endpoint https://localhost:8080/api/coffees?sortBy=price
-* Click send to send the request and retrieve the list of coffees.
+* Click send to send the request and retrieve the list of coffees by price
 
 #### Get Coffee by ID ####
+* Set the request type to GET
+* Enter the URL for the endpoint: http://localhost:8080/api/coffees/{id} 
+* Replace {id} with the id of the coffee you want to retrieve
+* Click send to send the request and retrieve the specified coffee
 
 
 ### POST Request ###
 * Set the request type to POST
-* Enter the URL for the endpoint: http://localhost:3000/coffees
-* In the request body, provide the details of the new coffee in JSON format. The attributes, will be name, description, price and origin
+* Enter the URL for the endpoint: http://localhost:8080/api/coffees
+* In the request body, provide the details of the new coffee in JSON format. The attributes will be name, description, price and origin
 * You do not set the id as this is generated randomly
 * An example of the JSON format will be shown below
-* Once happy with the details click send to send the request and create a new coffee. 
+* Once happy with the details click send to send the request and create a new coffee
 ```
 {
     "name": "Latte",
@@ -326,25 +328,25 @@ The API is hosted online, and you can access it using Postman
 
 ### PUT Request ###
 * Set the request type to PUT
-* Enter the URL for the endpoint: http://localhost:3000/coffees/{id}
+* Enter the URL for the endpoint: http://localhost:8080/coffees/{id}
 * Replace {id} with the id of the coffee you want to update
-* In the request body, provide the updated details of the coffee in JSON format. An example will be shown below
+* In the request body, you will see a prompt asking you to add your name in the body
+* An example will be shown below
+* Update the request body with all the desired details in a JSON format.
 * Once happy with the details click send to send the request and update the specified coffe.
 ```
 {
-    "name": "Latte",
-    "description": "delicious Latte",
-    "price": 3.99,
-    "origin": "India"
+   {
+	"name": "Add your name in the body"
+}
 }
 ```
 
 
 ### DELETE Request ###
 * Set the request type to DELETE
-* Enter the URL for the endpoint: http://localhost:3000/coffees/
-* Enter the URL for the endpoint: http://localhost:3000/coffees/{id} 
+* Enter the URL for the endpoint: http://localhost:8080/coffees/{id} 
 * Replace {id} with the id of the coffee you want to delete
-* Click send to send the request and create a new coffee
+* Click send to send the request and delete the specified coffee
 
 
