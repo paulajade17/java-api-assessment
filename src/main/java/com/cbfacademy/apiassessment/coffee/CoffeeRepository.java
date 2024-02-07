@@ -13,9 +13,9 @@ import com.cbfacademy.apiassessment.core.PersistenceException;
 public interface CoffeeRepository {
 
      /**
-     * Retrieves all coffee records from the repository.
+     * Find all Coffee entities
      *
-     * @return collection of coffee entities.
+     * @return a collection of coffee entities.
      * @throws PersistenceException if there is an issue with data persistence.
      */
 
@@ -26,12 +26,12 @@ public interface CoffeeRepository {
      * Finds a coffee entity by its unique identifier.
      *
      * @param id the identifier of the entity to find.
-     * @return the found entity, or null if no such entity exists
+     * @return the found entity
      * @throws CoffeeNotFoundException if the requested coffee is not found
      * @throws PersistenceException if there's an issue with data persistence
      */
 
-    Coffee findById(UUID id) throws CoffeeNotFoundException, PersistenceException;
+    Coffee findById(UUID id) throws CoffeeNotFoundException;
 
     /**
      * Saves a coffee entity (new or existing) in the repository.

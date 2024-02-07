@@ -23,38 +23,41 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     // File path to the JSON database
     private final String filePath;
 
-    // Gson instance for JSON serialization and deserialization
+    // Gson allows you to convert Java objects to JSON strings and vice versa
     private final Gson gson;
 
-    //In-memory database (Map) to hold coffee entities
+    // Map to hold coffee entities
     private final Map<UUID, Coffee> database;
 
     /**
      * Constructor for JsonCoffeeRepository.
-     * Initializes the file path, Gson instance, and loads data from the JSON file.
+     * Initializes the file path, creates new Gson instance, and loads data from the JSON file.
      *
-     * @param filePath The file path to the JSON database.
+     * @param filePath The file path to the JSON file containing coffee data.
      */
     public JsonCoffeeRepository(@Value("src/main/resources/static/database.json") String filePath) {
         this.filePath = filePath;
           // Create Gson instance with default settings
         gson = new GsonBuilder()
                 .create();
-        // Load data from the JSON file into the in-memory database    
+        // Load data from the JSON file into the Map   
         database = loadDataFromJson();
     }
 
      /**
-     * Loads data from the JSON file into the in-memory database.
+     * Loads data from the JSON file into the Map.
      *
-     * @return A Map representing the in-memory database.
+     * @return A Map representing the Map
      */
     private Map<UUID, Coffee> loadDataFromJson() {
+        // Filereader to read from the Json file located in filePath
+        // try block to ensure the reader is closed
         try (Reader reader = new FileReader(filePath)) {
              // Define the type for deserialization using Gson
             Type type = new TypeToken<Map<UUID, Coffee>>() {
             }.getType();
             // Deserialize the JSON data into a Map
+            // Deserialize allows you to convert JSON strings back into a Java object
             return gson.fromJson(reader, type);
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,6 +70,7 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     private void saveDataToJson() {
         try (Writer writer = new FileWriter(filePath)) {
              // Serialize the in-memory database and write to the JSON file
+             // Serialize allows to to convert Java objects into JSON strings
             gson.toJson(database, writer);
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,7 +79,7 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     /**
      * Retrieves all coffee entities from the in-memory database.
      *
-     * @return A Collection of Coffee objects representing all coffees.
+     * @return A Collection of Coffee objects.
      */
     @Override
     public Collection<Coffee> findAll() {

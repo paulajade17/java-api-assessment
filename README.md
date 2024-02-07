@@ -1,111 +1,70 @@
-# **Java API Assessment**
+# **Java API Assessment - Coffee Inventory API**
 
-## **Introduction**
-Dive into the world of API development using Java and SpringBoot. We're handing over a skeleton codebase; your challenge is to shape a top-notch API from it.
+## **Project Overview**
+The Coffee Inventory API aims to streamline the management of coffee inventory for coffee shop owners. The API provides functionalities for submitting coffee entries, retrieving coffee information, and performing essential operations like creating, updating, or deleting entries.
+
+## **Features**
 
 You can build any API of your choosing, but it must include the following:
 
-1. At least one algorithm
-1. Unit test at least one class
-1. Store the data in a JSON file 
-1. Exception handling 
-1. Evidence of inheritance
-1. Good use of HTTP Protocols - methods, request and response, have full CRUD operations supported 
-1. Documentation
+* List Coffees: View the list of available coffees in the inventory.
+* Add Coffee: Add a new coffee to the inventory.
+* Update Coffee: Modify the details of an existing coffee.
+* Delete Coffee: Remove coffee from the inventory.
 
-### **Learning Outcomes:**
 
-By the end of this assessment, you should be able to:
+### **Prerequisites**
 
-1. **Design and Architect APIs**: Get to grips with the nitty-gritty of curating a top-quality API, focusing on data flow and endpoint interactions.
-1. **Implement Best Practices**: Showcase your adherence to Java & SpringBoot coding standards, error handling, and optimal project structure.
-1. **Code Integration**: Seamlessly combine your creations with the provided skeleton codebase.
-1. **Exception Management**: Efficiently handle exceptions, ensuring your API remains sturdy and dependable.
+* Java 17: Ensure that Java is installed on your machine. You can download it from Java Downloads.
+* Terminal/Command Line: A command-line interface is required to interact with the application.
+* Postman: To test and perform API operations, you can use Postman. Download it  here https://www.postman.com/downloads/
+* Maven 3.8.4 or higher: Maven is a build and project management tool. You can download it from the official Apache Maven website.
 
-Onward with this assessment, you're set for a deep dive into API development with Java and SpringBoot.
 
-## **Design & Requirements**
+## **Getting Started**
 
-### **Design Considerations:**
-- **API Flow**: Map out your API's progression, from endpoints to their functionalities.
+* Go to https://github.com/paulajade17/java-api-assessment
+* Click on the green Code button and clone the repository
+* Open your terminal or command prompt:
 
-### **Requirements List:**
-- **Core**: Make use of Java and SpringBoot.
-- **End Points**: Ensure they are detailed and fully operational.
-- **Error Handling**: Your API should handle mishaps gracefully and return informative feedback.
+For Mac
 
-### **Learning Outcomes:**
-- Acknowledge the pivotal role of a focused design in APIs.
-- See firsthand how a detailed requirements list can pave the way for successful development.
-
-## **Repository Management**
-
-- **Consistent Commits**: Commit often, capturing your progress and thought process.
-- **README**: Not just an afterthought. Fill it with the essence of your API, setup instructions, and other salient details.
-
-### **Learning Outcomes:**
-- Hone your skills in effective version control.
-- Recognise the value of a well-curated repository.
-
-## **Code Quality & Structure**
-
-- **Best Practices**: Stick to Java and SpringBoot best practices and conventions.
-- **Modularity**: Your code should be modular, reusable, and easily comprehensible.
-
-#### **Learning Outcomes:**
-- Craft clean, efficient, and maintainable code.
-- Harness Java and SpringBoot to the fullest.
-
----
-
-## Getting Started
-
-- [Prerequisites](#prerequisites)
-
-- [Setup](#setup)
-
-### Prerequisites
-
-Before you begin, make sure you have the following installed:
-
-1. [JDK 17](https://learn.microsoft.com/en-gb/java/openjdk/download#openjdk-17) (or higher)
-
-2. [Git](https://git-scm.com/downloads)
-
-3. [Visual Studio Code](https://code.visualstudio.com/Download)
-   1. [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-   2. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack)
-
-Also make sure you have accounts for the following:
-
-1. [GitHub](https://github.com/signup)
-
-### Setup
-
-#### 1. Clone the Repository
+```
+Click the Launchpad icon in the Dock, type Terminal in the search field, then click Terminal.
+```
+For Windows
 
 ```sh
-git clone [REPO_URL]
-cd [REPO_NAME]
+Click start and search “Command Prompt”
 ```
 
-Replace [REPO_URL] with the link to your GitHub repository and [REPO_NAME] with the repository's name.
-
-#### 2. Install Dependencies
-
-Open a terminal at the root of the repo directory and run the following command to install the dependencies:
+* Cd into your desired directory i.e. Downloads
+* Run git clone command:
+* Git clone git@github.com:paulajade17/java-api-assessment.git
+* You should see the below if it has been cloned  successfully
 
 ```sh
+Cloning into 'java-api-assessment'...
+remote: Enumerating objects: 378, done.
+remote: Counting objects: 100% (325/325), done.
+remote: Compressing objects: 100% (185/185), done.
+remote: Total 378 (delta 94), reused 274 (delta 78), pack-reused 53
+Receiving objects: 100% (378/378), 119.31 KiB | 504.00 KiB/s, done.
+Resolving deltas: 100% (95/95), done.
+```
+* Cd java-api-assesment 
+
+## Install Dependencies ##
+
+Run the following command to compile the project using Maven on mac:
+
+```
 ./mvnw clean dependency:resolve
 ```
-
 If you are on a Windows machine, that will be:
-```cmd
+```
 mvnw clean dependency:resolve
 ```
-
-You should see console output similar to the following:
-
 ```sh
 [INFO] Scanning for projects...
 [INFO] 
@@ -115,35 +74,93 @@ You should see console output similar to the following:
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
 [INFO] --- clean:3.2.0:clean (default-clean) @ api-assessment ---
-[INFO] Deleting /Users/user/Dev/cbfacademy/java-api-assessment/target
-...
-[truncated output]
-...
+[INFO] 
+[INFO] --- dependency:3.5.0:resolve (default-cli) @ api-assessment ---
+[INFO] 
+[INFO] The following files have been resolved:
+[INFO]    org.springframework.boot:spring-boot-starter-web:jar:3.1.4:compile -- module spring.boot.starter.web [auto]
+[INFO]    org.springframework.boot:spring-boot-starter:jar:3.1.4:compile -- module spring.boot.starter [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-logging:jar:3.1.4:compile -- module spring.boot.starter.logging [auto]
+[INFO]    ch.qos.logback:logback-classic:jar:1.4.11:compile -- module ch.qos.logback.classic
+[INFO]    ch.qos.logback:logback-core:jar:1.4.11:compile -- module ch.qos.logback.core
+[INFO]    org.apache.logging.log4j:log4j-to-slf4j:jar:2.20.0:compile -- module org.apache.logging.slf4j [auto]
+[INFO]    org.apache.logging.log4j:log4j-api:jar:2.20.0:compile -- module org.apache.logging.log4j
+[INFO]    org.slf4j:jul-to-slf4j:jar:2.0.9:compile -- module jul.to.slf4j
+[INFO]    jakarta.annotation:jakarta.annotation-api:jar:2.1.1:compile -- module jakarta.annotation
+[INFO]    org.yaml:snakeyaml:jar:1.33:compile -- module org.yaml.snakeyaml [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-json:jar:3.1.4:compile -- module spring.boot.starter.json [auto]
+[INFO]    com.fasterxml.jackson.core:jackson-databind:jar:2.15.2:compile -- module com.fasterxml.jackson.databind
+[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:2.15.2:compile -- module com.fasterxml.jackson.annotation
+[INFO]    com.fasterxml.jackson.core:jackson-core:jar:2.15.2:compile -- module com.fasterxml.jackson.core
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.15.2:compile -- module com.fasterxml.jackson.datatype.jdk8
+[INFO]    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.15.2:compile -- module com.fasterxml.jackson.datatype.jsr310
+[INFO]    com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.15.2:compile -- module com.fasterxml.jackson.module.paramnames
+[INFO]    org.springframework.boot:spring-boot-starter-tomcat:jar:3.1.4:compile -- module spring.boot.starter.tomcat [auto]
+[INFO]    org.apache.tomcat.embed:tomcat-embed-core:jar:10.1.13:compile -- module org.apache.tomcat.embed.core
+[INFO]    org.apache.tomcat.embed:tomcat-embed-el:jar:10.1.13:compile -- module org.apache.tomcat.embed.el
+[INFO]    org.apache.tomcat.embed:tomcat-embed-websocket:jar:10.1.13:compile -- module org.apache.tomcat.embed.websocket
+[INFO]    org.springframework:spring-web:jar:6.0.12:compile -- module spring.web [auto]
+[INFO]    org.springframework:spring-beans:jar:6.0.12:compile -- module spring.beans [auto]
+[INFO]    io.micrometer:micrometer-observation:jar:1.11.4:compile -- module micrometer.observation [auto]
+[INFO]    io.micrometer:micrometer-commons:jar:1.11.4:compile -- module micrometer.commons [auto]
+[INFO]    org.springframework:spring-webmvc:jar:6.0.12:compile -- module spring.webmvc [auto]
+[INFO]    org.springframework:spring-aop:jar:6.0.12:compile -- module spring.aop [auto]
+[INFO]    org.springframework:spring-context:jar:6.0.12:compile -- module spring.context [auto]
+[INFO]    org.springframework:spring-expression:jar:6.0.12:compile -- module spring.expression [auto]
+[INFO]    org.springframework.boot:spring-boot-devtools:jar:3.1.4:runtime (optional) -- module spring.boot.devtools [auto]
+[INFO]    org.springframework.boot:spring-boot:jar:3.1.4:compile -- module spring.boot [auto]
+[INFO]    org.springframework.boot:spring-boot-autoconfigure:jar:3.1.4:compile -- module spring.boot.autoconfigure [auto]
+[INFO]    org.springframework.boot:spring-boot-starter-test:jar:3.1.4:test -- module spring.boot.starter.test [auto]
+[INFO]    org.springframework.boot:spring-boot-test:jar:3.1.4:test -- module spring.boot.test [auto]
+[INFO]    org.springframework.boot:spring-boot-test-autoconfigure:jar:3.1.4:test -- module spring.boot.test.autoconfigure [auto]
+[INFO]    com.jayway.jsonpath:json-path:jar:2.8.0:test -- module json.path (auto)
+[INFO]    org.slf4j:slf4j-api:jar:2.0.9:compile -- module org.slf4j
+[INFO]    jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.1:test -- module jakarta.xml.bind
+[INFO]    jakarta.activation:jakarta.activation-api:jar:2.1.2:test -- module jakarta.activation
+[INFO]    net.minidev:json-smart:jar:2.4.11:test -- module json.smart (auto)
+[INFO]    net.minidev:accessors-smart:jar:2.4.11:test -- module accessors.smart (auto)
+[INFO]    org.ow2.asm:asm:jar:9.3:test -- module org.objectweb.asm
+[INFO]    org.assertj:assertj-core:jar:3.24.2:test -- module org.assertj.core
+[INFO]    org.hamcrest:hamcrest:jar:2.2:test -- module org.hamcrest [auto]
+[INFO]    org.junit.jupiter:junit-jupiter:jar:5.9.3:test -- module org.junit.jupiter
+[INFO]    org.junit.jupiter:junit-jupiter-api:jar:5.9.3:test -- module org.junit.jupiter.api
+[INFO]    org.opentest4j:opentest4j:jar:1.2.0:test -- module org.opentest4j
+[INFO]    org.junit.platform:junit-platform-commons:jar:1.9.3:test -- module org.junit.platform.commons
+[INFO]    org.apiguardian:apiguardian-api:jar:1.1.2:test -- module org.apiguardian.api
+[INFO]    org.junit.jupiter:junit-jupiter-params:jar:5.9.3:test -- module org.junit.jupiter.params
+[INFO]    org.junit.jupiter:junit-jupiter-engine:jar:5.9.3:test -- module org.junit.jupiter.engine
+[INFO]    org.junit.platform:junit-platform-engine:jar:1.9.3:test -- module org.junit.platform.engine
+[INFO]    org.mockito:mockito-junit-jupiter:jar:5.3.1:test -- module org.mockito.junit.jupiter [auto]
+[INFO]    org.skyscreamer:jsonassert:jar:1.5.1:test -- module jsonassert (auto)
+[INFO]    com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test -- module android.json (auto)
+[INFO]    org.springframework:spring-core:jar:6.0.12:compile -- module spring.core [auto]
+[INFO]    org.springframework:spring-jcl:jar:6.0.12:compile -- module spring.jcl [auto]
+[INFO]    org.springframework:spring-test:jar:6.0.12:test -- module spring.test [auto]
+[INFO]    org.xmlunit:xmlunit-core:jar:2.9.1:test -- module org.xmlunit [auto]
+[INFO]    com.google.code.gson:gson:jar:2.10.1:compile -- module com.google.gson
+[INFO]    org.mockito:mockito-core:jar:5.3.1:compile -- module org.mockito [auto]
+[INFO]    net.bytebuddy:byte-buddy:jar:1.14.8:compile -- module net.bytebuddy
+[INFO]    net.bytebuddy:byte-buddy-agent:jar:1.14.8:compile -- module net.bytebuddy.agent
+[INFO]    org.objenesis:objenesis:jar:3.3:runtime -- module org.objenesis [auto]
+[INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.060 s
-[INFO] Finished at: 2023-10-03T16:18:25+01:00
+[INFO] Total time:  0.656 s
+[INFO] Finished at: 2024-02-07T19:33:54Z
 [INFO] ------------------------------------------------------------------------
 ```
-
-#### 3. Running the Application
-
-To start the API in VS Code, press `F5` or tap the 'Play' icon for the `api-assessment` app in the Spring Boot Dashboard.
-
-Alternatively, to start the API from the terminal, run the following command:
-
-```sh
+### **Running the Application**
+- Run the following command on mac:
+```
 ./mvnw spring-boot:run
 ```
+* Or this if you are on a Windows machine:
 
-Or on Windows:
-
-```cmd
+```
 mvnw spring-boot:run
 ```
-
-You should see console output similar to the following (press `Ctrl + C` to exit):
+* You should see the following script below if run successfully
 
 ```sh
 [INFO] Scanning for projects...
@@ -152,53 +169,182 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 [INFO] Building api-assessment 0.0.1-SNAPSHOT
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- clean:3.2.0:clean (default-clean) @ api-assessment ---
-[INFO] Deleting /Users/gary/Dev/cbfacademy/java-api-assessment/target
 [INFO] 
 [INFO] >>> spring-boot:3.1.4:run (default-cli) > test-compile @ api-assessment >>>
 [INFO] 
 [INFO] --- resources:3.3.1:resources (default-resources) @ api-assessment ---
 [INFO] Copying 1 resource from src/main/resources to target/classes
-[INFO] Copying 0 resource from src/main/resources to target/classes
-...
-[truncated output]
-...
-2023-10-03T17:17:34.413+01:00  INFO 35536 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-10-03T17:17:34.751+01:00  INFO 35536 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-10-03T17:17:34.756+01:00  INFO 35536 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-10-03T17:17:34.756+01:00  INFO 35536 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
-2023-10-03T17:17:34.777+01:00  INFO 35536 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-10-03T17:17:34.778+01:00  INFO 35536 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 364 ms
-2023-10-03T17:17:34.898+01:00  INFO 35536 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-10-03T17:17:34.907+01:00  INFO 35536 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-10-03T17:17:34.911+01:00  INFO 35536 --- [  restartedMain] com.cbfacademy.apiassessment.App         : Started App in 0.643 seconds (process running for 0.786)
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ api-assessment ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 10 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ api-assessment ---
+[INFO] skip non existing resourceDirectory /Users/paulasemakula-buuza/Downloads/tests/java-api-assessment/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ api-assessment ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] <<< spring-boot:3.1.4:run (default-cli) < test-compile @ api-assessment <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.1.4:run (default-cli) @ api-assessment ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2024-02-07T19:41:26.076Z  INFO 3867 --- [  restartedMain] com.cbfacademy.apiassessment.App         : Starting App using Java 17.0.9 with PID 3867 (/Users/paulasemakula-buuza/Downloads/tests/java-api-assessment/target/classes started by paulasemakula-buuza in /Users/paulasemakula-buuza/Downloads/tests/java-api-assessment)
+2024-02-07T19:41:26.077Z  INFO 3867 --- [  restartedMain] com.cbfacademy.apiassessment.App         : No active profile set, falling back to 1 default profile: "default"
+2024-02-07T19:41:26.094Z  INFO 3867 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-02-07T19:41:26.094Z  INFO 3867 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-02-07T19:41:26.375Z  INFO 3867 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-02-07T19:41:26.379Z  INFO 3867 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-07T19:41:26.379Z  INFO 3867 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2024-02-07T19:41:26.398Z  INFO 3867 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-07T19:41:26.399Z  INFO 3867 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 303 ms
+2024-02-07T19:41:26.501Z  INFO 3867 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-02-07T19:41:26.512Z  INFO 3867 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-07T19:41:26.515Z  INFO 3867 --- [  restartedMain] com.cbfacademy.apiassessment.App         : Started App in 0.544 seconds (process running for 0.687)
+
+```
+## **Access the API Online**
+
+The API is hosted online, and you can access it using Postman
+
+* Open your browser and navigate to the base URL: https:// localhost:8080/api/coffees
+* You should see a similar JSON objects like the one below
+* To view the data in a sorted order from lowest to highest price, please use the following URL: https://localhost:8080/api/coffees?sortBy=price
+```
+[
+{
+"id": "afe40205-0625-42f1-aa4e-b8a545afbba1",
+"name": "Caramel",
+"description": "delicious caramel coffee",
+"price": 1.99,
+"brand": "Java's Cup",
+"origin": "India"
+},
+{
+"id": "46bcf09a-f6fc-4ac3-9961-1b133f6aa90e",
+"name": "Spicy Sensation",
+"description": "coffee infused with spicy chillies",
+"price": 9.99,
+"brand": "Coffee club",
+"origin": "India"
+},
+{
+"id": "8f99f192-7c14-4330-81a6-abac9ba07738",
+"name": "Mint Chocolate",
+"description": "hints of mint and chocolate",
+"price": 5.99,
+"brand": "Nescafe",
+"origin": "Columbia"
+},
+{
+"id": "9ba1f5e4-6b14-4828-95b4-4fa0bbeee0ac",
+"name": "Dark Roast",
+"description": "A strong and rich taste",
+"price": 4.99,
+"brand": "Nescafe",
+"origin": "Indonesia"
+},
+{
+"id": "510e9f44-7ee4-4f25-9964-22c0788d884e",
+"name": "Americano",
+"description": "Bold and dark flavours",
+"price": 4.99,
+"brand": "Nescafe",
+"origin": "Brazil"
+},
+{
+"id": "b04b2e41-f511-4879-b09f-03a1f5f50d0f",
+"name": "Original",
+"description": "A signature flavour",
+"price": 2.99,
+"brand": "Beanies",
+"origin": "Columbia"
+},
+]
 ```
 
-Open your browser and navigate to `http://localhost:8080`.
+## Endpoints
 
-## **Deliverables**
+| Endpoint                           | Description                                               | Parameters                                            |
+|------------------------------------|-----------------------------------------------------------|-------------------------------------------------------|
+| `GET /api/coffees`                 | Retrieve a list of all coffees or retrieves list in a sorted order by price.      | `sortBy`: string (Optional, Default: "defaultSort")   |
+| `GET /api/coffees/{id}`            | Retrieve a specific coffee by its ID.                     | `id`: UUID (Required)                                |
+| `POST /api/coffees`                | Create a new coffee.                                      | `name`: string (Required),<br> `price`: double (Required), <br> `description`: string (Optional) <br> `origin`: string (Optional) |
+| `PUT /api/coffees/{id}`            | Update an existing coffee by ID.                          | `id`: UUID (Required),<br> `updatedCoffee`: Coffee object (Request body) |
+| `DELETE /api/coffees/{id}`         | Delete a coffee by ID.                                    | `id`: UUID (Required)                                |
 
-Ensure that your work is merged to the `main` branch of your GitHub repository by the specified deadline (original or extended). Your solution will assessed based on its state *at that point*; any later commits will **not** be taken into account.
 
-## FAQs
+## **Access the API with POSTMAN**
 
-- Q: How can I process JSON in Java?
-    
-    A: There are a number of open-source packages that you can use to manipulate JSON. We recommend [Gson](https://github.com/google/gson), but you can also investigate alternatives like [json-simple](https://github.com/cliftonlabs/json-simple) or [Jackson](https://github.com/FasterXML/jackson-databind/).
+* Launch the POSTMAN application on your computer or create an account on the website https://www.postman.com/
+* Once logged in you should be directed to the home page
+* Select "Workspaces" drop down in the top left corner
+* Select My Workspace
+* Select the + button and select create from template "REST API basics"
 
-- Q: Can I use another IDE I'm more familiar with instead of VS Code, like IntelliJ or Eclipse?
+### GET Request ###
+#### Get All Coffees ####
+* Set the request type to GET
+* Enter the URL for the endpoint https://localhost:8080/api/coffees
+* Click send to send the request and retrieve the list of coffees.
 
-    A: You can if you wish, but only VS Code is formally supported by CBF Academy staff, so you do so at your own risk.
+#### Get All Coffees sorted by price #### 
+* Set the request type to GET
+* Enter the URL for the endpoint https://localhost:8080/api/coffees?sortBy=price
+* Click send to send the request and retrieve the list of coffees.
 
-## Top Tips
+#### Get Coffee by ID ####
 
-- :camera_flash: Commit frequently and use meaningful commit messages. A granular, well-labelled history becomes an increasingly valuable asset over time.
-- :cactus: Use feature branches. Build the habit of isolating your changes for specific tasks and merging them into your default branch when complete.
-- :vertical_traffic_light: Use consistent naming conventions. Choose easily understandable names and naming patterns for your classes, functions and variables.
-- :triangular_ruler: Keep your code tidy. Using the built-in formatting of VS Code or other IDEs makes your code easier to read and mistakes easier to spot.
-- :books: Read the docs. Whether via Intellisense in your IDE, or browsing online documentation, build a clear understanding of the libraries your code leverages.
-- :calendar: Don't wait until the last minute. Plan your work early and make the most of the time available to complete the assessment and avoid pre-deadline palpitations.
-- :sos: Ask. :clap: For. :clap: Help! :clap: Your mentors, instructors and assistants are literally here to support you, so *make use of them* - don't sit and struggle in silence.
 
-Best of luck! Remember, it's not just about the destination; it's the journey. Happy coding! 🚀
+### POST Request ###
+* Set the request type to POST
+* Enter the URL for the endpoint: http://localhost:3000/coffees
+* In the request body, provide the details of the new coffee in JSON format. The attributes, will be name, description, price and origin
+* You do not set the id as this is generated randomly
+* An example of the JSON format will be shown below
+* Once happy with the details click send to send the request and create a new coffee. 
+```
+{
+    "name": "Latte",
+    "description": "delicious Latte",
+    "price": 3.99,
+    "origin": "India"
+}
+```
+
+### PUT Request ###
+* Set the request type to PUT
+* Enter the URL for the endpoint: http://localhost:3000/coffees/{id}
+* Replace {id} with the id of the coffee you want to update
+* In the request body, provide the updated details of the coffee in JSON format. An example will be shown below
+* Once happy with the details click send to send the request and update the specified coffe.
+```
+{
+    "name": "Latte",
+    "description": "delicious Latte",
+    "price": 3.99,
+    "origin": "India"
+}
+```
+
+
+### DELETE Request ###
+* Set the request type to DELETE
+* Enter the URL for the endpoint: http://localhost:3000/coffees/
+* Enter the URL for the endpoint: http://localhost:3000/coffees/{id} 
+* Replace {id} with the id of the coffee you want to delete
+* Click send to send the request and create a new coffee
+
+
