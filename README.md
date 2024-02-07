@@ -1,7 +1,7 @@
 # **Java API Assessment - Coffee Inventory API**
 
 ## **Project Overview**
-The Coffee Inventory API aims to streamline the management of coffee inventory for coffee shop owners. The API provides functionalities for submitting coffee entries, retrieving coffee information, and performing essential operations like creating, updating, or deleting entries.
+This API streamlines the management of coffee inventory for small business owners, by providing users with essential operations such as creating, updating, or deleting coffees, along with retrieving coffee information. Furthermore, it offers the capability to retrieve a sorted list of all stored coffees, sorted from least expensive to most expensive. Designed specifically for coffee shop owners, this API serves as an effective tool for checking and monitoring coffee inventory with ease.
 
 ## **Features**
 
