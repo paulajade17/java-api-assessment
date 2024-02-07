@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import java.util.ArrayList;
@@ -53,6 +52,10 @@ public class CoffeeTest {
     @DisplayName("size() method returns a non empty list")
     public void getAllCoffees_ReturnsNonEmptyList() {
         List<Coffee> coffeeList = new ArrayList<>();
+        //link this to my defaultcoffeeservice
+        //set up service class 
+        //add coffees from below
+        
     
         coffeeList.add(new Coffee("Original", "Delicious coffee", 3.99, "Nescafe", "Brazil"));
         coffeeList.add(new Coffee("Mocha", "Delicious mocha", 4.99, "Java's Cup", "India"));

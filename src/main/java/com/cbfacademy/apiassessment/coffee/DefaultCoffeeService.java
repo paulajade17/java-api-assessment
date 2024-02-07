@@ -19,7 +19,7 @@ public class DefaultCoffeeService implements CoffeeService {
     /**
      * Constructor for DefaultCoffeeService.
      * Initializes the repository field with the CoffeeRepository instance.
-     * This follows the dependency injection pattern.
+     * This follows dependency injection.
      *
      * @param repository The CoffeeRepository instance to be used by the service.
      */
@@ -29,7 +29,7 @@ public class DefaultCoffeeService implements CoffeeService {
     }
     /**
      * 
-     * Retrieves a list of all coffees available in the system.
+     * Retrieves a list of all coffees available.
      * 
      * 
      *
@@ -37,6 +37,7 @@ public class DefaultCoffeeService implements CoffeeService {
      */
 
     @Override
+        // getAllCoffees declares a public method that returns a list of coffee objects
     public List<Coffee> getAllCoffees() {
         // new ArrayList called coffeeList is initialised to store the retrieved coffees
         List<Coffee> coffeeList = new ArrayList<>();
@@ -44,10 +45,10 @@ public class DefaultCoffeeService implements CoffeeService {
         // Enhanced for loop iterates over the each coffee object in the collection from the findAll() method
         // repository.findAll method should return a collection of coffee objects, as it retrieves the objects from a data source 'repository'.
         for (Coffee coffee : repository.findAll()) {
-            //inside the loop each coffee object is added to the coffeeList
+            // Inside the loop each coffee object is added to the coffeeList
             coffeeList.add(coffee);
         }
-        // All the coffee objects retrieved from the data source are returned
+        // All the coffee objects retrieved from the repository are returned
         return coffeeList;
     }
 
@@ -56,27 +57,28 @@ public class DefaultCoffeeService implements CoffeeService {
      *
      * @return A sorted list of Coffee objects based on price.
      */
-
+    // sortCoffeesByPrice declares a public method that returns a list of coffee objects by price
     public List<Coffee> sortCoffeesByPrice() {
+        // Retrieves a list of coffees
         List<Coffee> coffeeList = getAllCoffees();
         
         // Use n to get the total number of elements in the list.
         int n = coffeeList.size();
 
         /**
-        * Implemented bubble sort algorithm, it's not as efficent but is beginner friendly.
+        * Implemented bubble sort algorithm, it's not as efficient but is beginner friendly.
         * i - Outer loop iterates over each element in the list. 
         * -1 is included to avoid an array out of bounds error, when the loop get's to the second to last element i
         * it will be comparing against the last element.
         * i++ incruments i through the loop
-        * this represents the number of passes through the array
+        * Used a nested for loop
         */
         for (int i = 0; i < n - 1; i++) {
             // Inner loop compares and swaps each elements next to each other.
             for (int j = 0; j < n - i - 1; j++) {
                 // if the price of j is greater than j + 1 then the two elements should be swapped.
                 // j + 1 is the next number after j
-                // temp variable has been created and points to j 
+                // temp variable has been created to temporarily store j if the statement is true.
                 if (coffeeList.get(j).getPrice() > coffeeList.get(j + 1).getPrice()) {
                     Coffee temp = coffeeList.get(j);
                     // swaps position of j with j + 1
@@ -152,7 +154,7 @@ public class DefaultCoffeeService implements CoffeeService {
         coffee.setOrigin(updatedCoffee.getOrigin());
 
         // Save the updated Coffee object back to the repository
-        // and returning the saved instance (which may include generated identifiers)
+        // and returning the saved instance 
         return repository.save(coffee);
     }
 
