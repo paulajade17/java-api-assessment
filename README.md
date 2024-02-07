@@ -5,9 +5,9 @@ This API streamlines the management of coffee inventory for small business owner
 
 ## **Features**
 
-You can build any API of your choosing, but it must include the following:
-
-* List Coffees: View the list of available coffees in the inventory.
+* Retrieve Coffees: View the list of available coffees in the inventory.
+* Retrieve: Coffees View the list of avaliable coffees in the inventory in sorted order. 
+* Retrieve Coffee by id: View a specific coffee in the inventory.
 * Add Coffee: Add a new coffee to the inventory.
 * Update Coffee: Modify the details of an existing coffee.
 * Delete Coffee: Remove coffee from the inventory.
@@ -15,26 +15,26 @@ You can build any API of your choosing, but it must include the following:
 
 ### **Prerequisites**
 
-* Java 17: Ensure that Java is installed on your machine. You can download it from Java Downloads.
+* Java 17: Ensure Java is installed on your machine. https://www.oracle.com/java/technologies/downloads/ 
 * Terminal/Command Line: A command-line interface is required to interact with the application.
-* Postman: To test and perform API operations, you can use Postman. Download it  here https://www.postman.com/downloads/
+* Postman: To test and perform API operations, you can use Postman. Download it here https://www.postman.com/downloads/
 * Maven 3.8.4 or higher: Maven is a build and project management tool. You can download it from the official Apache Maven website.
 
 
 ## **Getting Started**
 
 * Go to https://github.com/paulajade17/java-api-assessment
-* Click on the green Code button and clone the repository
+* Click on the green Code button and clone SSH the repository URL
 * Open your terminal or command prompt:
 
 For Mac
 
-```
+```plaintext
 Click the Launchpad icon in the Dock, type Terminal in the search field, then click Terminal.
 ```
 For Windows
 
-```sh
+```plaintext
 Click start and search “Command Prompt”
 ```
 
