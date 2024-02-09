@@ -333,7 +333,7 @@ The API is hosted online, and you can access it using a web browser and Postman
 * In the request body, you will see a prompt asking you to add your name in the body
 * An example will be shown below
 * Update the request body with all the desired details in a JSON format.
-* Once happy with the details click send to send the request and update the specified coffe.
+* Once happy with the details click send to send the request and update the specified coffee.
 ```
 {
    {

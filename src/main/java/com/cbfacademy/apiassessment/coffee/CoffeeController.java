@@ -28,28 +28,31 @@ public class CoffeeController {
     }
 
     /**
-     * Retrieve a list of all coffees or retrieve the list by price.
+     * Retrieve a list of all coffees or retrieve a list of all coffees by price.
      * If "price" is specified in the query parameter, return a sorted list of coffees by price.
+     * The  "price" query parameter is optional, the method will still be called if this parameter is not provided.
      * Otherwise, return an unsorted list of all coffees.
+     * ResponseEntity is apart of the springboot framework and responsible for HTTP requests.
      *
      * @param sortBy The query parameter to specify the sorting criteria.
      * @return A ResponseEntity containing the list of coffees and HttpStatus OK if successful.
      */
+    // This annotation handles the HTTP GET requests.
     @GetMapping
     public ResponseEntity<List<Coffee>> getAllCoffees(@RequestParam(required = false, defaultValue = "defaultSort") String sortBy) {
         // Retrieve the list of all coffees using the CoffeeService
         List<Coffee> coffees = coffeeService.getAllCoffees();
         
-        // Check if optional parameter sortBy equals to string "price"
-        // If true the request is sorted by price.
+        // Checks if optional parameter sortBy equals to string "price"
+        // If true the request is sorted by price
         if (sortBy.equals("price")) {
-            // If sorting by price is requested, sort the coffees by price using CoffeeService
+            // Assigns the list of coffees by price, returned by the sortCoffeesByPrice() method, to the sortedCoffees variable
             List<Coffee> sortedCoffees = coffeeService.sortCoffeesByPrice();
-            // Return a ResponseEntity with the sorted coffees and HTTP status OK
+            // If statement is true return a ResponseEntity with the sorted coffees and HTTP status OK
             return new ResponseEntity<>(sortedCoffees, HttpStatus.OK);
         }
-        // If no sorting is requested or an invalid sortBy value is provided,
-        // return a ResponseEntity with the unsorted coffees and HTTP status OK
+        // If sortBy price is not specified (condition is not true)
+        // return a ResponseEntity with the unsorted list of coffees and HTTP status OK
         return new ResponseEntity<>(coffees, HttpStatus.OK);
     }
 
@@ -60,14 +63,16 @@ public class CoffeeController {
      * @return A ResponseEntity containing the requested coffee and HttpStatus OK if found,
      *         or HttpStatus NOT_FOUND if the ID is not found.
      */
+    // This annotation handles the HTTP GET requests for retrieving a coffee with a specific ID 
     @GetMapping("/{id}")
     public ResponseEntity<Coffee> getCoffee(@PathVariable UUID id) {
+        // try catch block
         try {
-             // Attempt to get the coffee by ID
+             // Attempt to get the coffee by ID using coffeeService instance.
             Coffee coffee = coffeeService.getCoffee(id);
             //If the coffee is found, return a ResponseEntity with the coffee and HTTP status OK
             return new ResponseEntity<>(coffee, HttpStatus.OK);
-            
+            // If IllegalArguement is caught it means the coffee with the specific id is not found
         } catch(IllegalArgumentException exception) {
             // Handle exception when the coffee with the specified ID is not found
             //Return a ResponseEntity with HTTP status NOT_FOUND
@@ -84,20 +89,14 @@ public class CoffeeController {
      * @param coffee The coffee object to create.
      * @return A ResponseEntity containing the created coffee and HttpStatus CREATED if successful.
      */
-    // @PostMapping
-    // public ResponseEntity<Coffee> createCoffee(@RequestBody Coffee coffee) {
-    //      // Create a new coffee and return the response
-    //     Coffee createdCoffee = coffeeService.createCoffee(coffee);
-    //     //Return a ResponseEntity with the created coffee and HTTP status CREATED
-    //     return new ResponseEntity<>(createdCoffee, HttpStatus.CREATED);
-    // }
-
-        @PostMapping
-        public Coffee createCoffee(@RequestBody Coffee coffee) {
-        // Create a new coffee
+    // This annotation handles the HTTP POST requests.
+    @PostMapping
+    //It extracts the coffee object from the request body, passes it to a CoffeeService instance to create the coffee.
+    public ResponseEntity<Coffee> createCoffee(@RequestBody Coffee coffee) {
+         // Create a new coffee 
         Coffee createdCoffee = coffeeService.createCoffee(coffee);
-        // Return the created coffee
-        return createdCoffee;
+        //Return a ResponseEntity with the created coffee and HTTP status CREATED
+        return new ResponseEntity<>(createdCoffee, HttpStatus.CREATED);
     }
 
     /**
@@ -108,32 +107,19 @@ public class CoffeeController {
      * @return A ResponseEntity containing the updated coffee and HttpStatus OK if successful,
      *         or HttpStatus NOT_FOUND if the ID is not found.
      */
-    // @PutMapping("/{id}")
-    // public ResponseEntity<Coffee> updateCoffee(@PathVariable UUID id, @RequestBody Coffee updatedCoffee) {
-    //     try {
-    //         // Attempt to update the coffee and return the response
-    //         Coffee coffee = coffeeService.updateCoffee(id, updatedCoffee);
-    //         // If the coffee is updated successfully, return a ResponseEntity with the updated coffee and HTTP status OK.
-    //         return new ResponseEntity<>(coffee, HttpStatus.OK);
-    //     } catch (IllegalArgumentException exception) {
-    //         // Handle exception when the coffee with the specified ID is not found
-    //         // Return a ResponseEntity with HTTP status NOT_FOUND
-    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     }
-    // }
 
         // PutMapping annotation handles PUT HTTP requests for updating a coffee with a specific ID 
         // {id} the id that is expected to be passed through the URL after coffees/
     @PutMapping("/{id}")
-        // updateCoffee declares a public method that returns a Coffee object
-        // it takes two parameters 'id' and 'updateCoffee'
-        // @PathVariable UUID id - the id is extracted from the URL path
+        // @PathVariable UUID id - the id is extracted from the URL path.
         // @RequestBody Coffee updatedCoffee - the updated data that will be extracted
+        // and passes it a CoffeeService instance to create the updated coffee.
     public Coffee updateCoffee(@PathVariable UUID id, @RequestBody Coffee updatedCoffee) {
-        // Attempts to update the coffee by calling updateCoffee method from coffeeService
+        // Attempts to update the coffee by calling updateCoffee method of the coffeeService instance
         // The method takes in parameter 'id' and 'updateCoffee'
+        // The method returns the updated coffee
         Coffee coffee = coffeeService.updateCoffee(id, updatedCoffee);
-        // Checks if updated coffee is null, if it is it means the coffee with the specified ID was not found.
+        // Checks if updated coffee object returned from updatedCoffee method is null, if it is it means the coffee with the specified ID was not found.
         if (coffee == null) {
         // Throw a ResponseStatusException with HTTP status code 404 (NOT_FOUND)
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Coffee not found");
@@ -141,45 +127,28 @@ public class CoffeeController {
         // coffee will be returned if the update was successful
         return coffee;
         }
+        
+        
 
-    
-    
-
-/**
+    /**
      * Delete a coffee by ID.
      *
      * @param id The ID of the coffee to delete.
      * @return A ResponseEntity with HttpStatus NO_CONTENT if the coffee was successfully deleted,
      *         or HttpStatus NOT_FOUND if the ID was not found.
      */
-    // @DeleteMapping("/{id}")
-    // public ResponseEntity<Void> deleteCoffee(@PathVariable UUID id) {
-    //     try {
-    //         // Attempt to delete the coffee by ID using the coffeeService.
-    //         coffeeService.deleteCoffee(id);
-    //         // If the coffee is deleted successfully, return a ResponseEntity with HTTP status NO_CONTENT
-    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            
-    //     } catch (IllegalArgumentException exception) {
-    //         // Handle exception when the coffee with the specified ID is not found
-    //         // Return a ResponseEntity with HTTP status NOT_FOUND
-    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     }
-    // }
 
-    // DeleteMapping annotation handles DELETE HTTP requests for updating a coffee with a specific ID 
-    // {id} the id that is expected to be passed through the URL after coffees/
+    // This annotation handles the HTTP DELETE requests for updating a coffee with a specific ID.
+    // {id} the id that is expected to be passed through the URL after coffees.
     @DeleteMapping("/{id}")
-    // deleteCoffee is a public method that does not return anything
-    // It takes id as a parameter
      // @PathVariable UUID id - the id is extracted from the URL path
     public void deleteCoffee(@PathVariable UUID id) {
-    // Exception handling    
+    // Exception handling
     try {
-        // Attempts to delete the coffee by ID using the coffeeService.
+        // Attempts to delete the coffee by ID using a coffeeService instance.
         coffeeService.deleteCoffee(id);
     } catch (CoffeeNotFoundException exception) {
-        // If the coffee with the specified ID is not found,
+        // If the coffee with the specified ID is not found.
         // throw a ResponseStatusException with HTTP status code 404 NOT_FOUND
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
