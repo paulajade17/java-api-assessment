@@ -43,27 +43,26 @@ public class JsonCoffeeRepository implements CoffeeRepository {
           // Create a new Gson instance with default settings
         gson = new GsonBuilder()
                 .create();
-        // Load data from the JSON file into the Map   
+        //  Uses loadDataFromJSON() method to load data from the JSON file into the map of coffee entities   
         database = loadDataFromJson();
     }
 
      /**
-     * Loads data from the JSON file into the Map.
+     * Reads data from the JSON file and deserialises it into the map of coffee entities.
      *
-     * @return A Map representing the Map
+     * @return A Map representing the coffees
      */
     private Map<UUID, Coffee> loadDataFromJson() {
-        // Initialises Reader ojected called reader
+        // Initialises Reader object called reader
         // Try block ensures the Reader is closed properly
         // If an exception is caught the Reader will be closed
-        // Filereader to read from Json file specified by filePath
-        // try block to ensure the reader is closed
+        // Use filereader to read from Json file 
         try (Reader reader = new FileReader(filePath)) {
              // Defines the type for deserialization using Gson
             Type type = new TypeToken<Map<UUID, Coffee>>() {
             }.getType();
             // Deserialize allows you to convert JSON strings back into a Java object
-            // Deserialize the JSON data from the reader into a Map
+            // Deserialize the JSON data read from the reader and converts it into the in memory map of entities.
             return gson.fromJson(reader, type);
             // catches any IOException that might occur during the file reading process
         } catch (IOException e) {
@@ -113,7 +112,9 @@ public class JsonCoffeeRepository implements CoffeeRepository {
      * @param entity The Coffee object to save.
      * @return The saved Coffee object.
      */
+
     @Override
+    // When a new coffee is saved using the save (Coffee enity) method it is added to the map.
     public Coffee save(Coffee entity) {
         // Put the coffee into the hash map by using getId() as the key and 'enity' as the value.
         database.put(entity.getId(), entity);
