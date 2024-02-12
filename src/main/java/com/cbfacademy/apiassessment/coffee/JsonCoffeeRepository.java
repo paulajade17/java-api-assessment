@@ -16,17 +16,18 @@ import org.springframework.stereotype.Repository;
 
 /**
  * The JsonCoffeeRepository class implements the CoffeeRepository interface
- * and uses a JSON file as a data store for coffee entities.
+ * and uses a JSON file as a data store for coffee objects
  */
 @Repository
 public class JsonCoffeeRepository implements CoffeeRepository {
+    // File path is a string where the file is stored
     // File path to the JSON file
     private final String filePath;
 
     // Gson allows you to convert Java objects to JSON strings and vice versa
     private final Gson gson;
 
-    // Map to hold coffee entities called database
+    // Map to hold coffee objects called database
     private final Map<UUID, Coffee> database;
 
     /**
@@ -35,20 +36,20 @@ public class JsonCoffeeRepository implements CoffeeRepository {
      *
      * @param filePath is a string representing the path to a JSON file containing coffee data.
      */
-     // @Value injects "src/main/resources/static/database.json" into the filePath parameter
+    // @Value injects the file "src/main/resources/static/database.json" into the filePath parameter
     // The constructor initializes a JsonCoffeeRepository object by injecting the path to a JSON file 
-    // containing coffee data and then loading the data from that file into a data structure using Gson.
+    // containing coffee data and then loading the data from the Json file, into a data structure using Gson.
     public JsonCoffeeRepository(@Value("src/main/resources/static/database.json") String filePath) {
         this.filePath = filePath;
           // Create a new Gson instance with default settings
         gson = new GsonBuilder()
                 .create();
-        //  Uses loadDataFromJSON() method to load data from the JSON file into the map of coffee entities   
+        //  Uses loadDataFromJSON() method to load data from the JSON file into the map of coffee objects   
         database = loadDataFromJson();
     }
 
      /**
-     * Reads data from the JSON file and deserialises it into the map of coffee entities.
+     * Reads data from the JSON file and deserialises it into the map of coffee objects.
      *
      * @return A Map representing the coffees
      */
@@ -61,8 +62,8 @@ public class JsonCoffeeRepository implements CoffeeRepository {
              // Defines the type for deserialization using Gson
             Type type = new TypeToken<Map<UUID, Coffee>>() {
             }.getType();
-            // Deserialize allows you to convert JSON strings back into a Java object
-            // Deserialize the JSON data read from the reader and converts it into the in memory map of coffe entities.
+            // Deserialize allows you to convert JSON strings into a Java objects
+            // Deserialize the JSON data read from the reader and converts it into a map of coffe objects.
             return gson.fromJson(reader, type);
             // catches any IOException that might occur during the file reading process
         } catch (IOException e) {
@@ -73,21 +74,21 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     }
     /**
      * Saves the map to the JSON file.
-     * Attempts to write the data of the hash map in JSON format to a file specifed by filePath.
+     * Attempts to write the data of the hash map in JSON format to the JSON file
      */
     private void saveDataToJson() {
         // try catch block to ensure files are closed properly.
-        // Writer object named writer is created using a FileWriter initialized with the filePath
+        // Writer object named writer is created using a FileWriter initialized with the JSON file
         try (Writer writer = new FileWriter(filePath)) {
             // Serialize allows you to convert Java objects into JSON strings
-            // Serializes the hash map to JSON format and writes it to the file specifed by writer
+            // Serializes the hash map to JSON format and writes it to JSON file
             gson.toJson(database, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     /**
-     * Retrieves all coffee entities from the hash map.
+     * Retrieves all coffee objects from the hash map.
      *
      * @return A Collection of Coffee objects.
      */

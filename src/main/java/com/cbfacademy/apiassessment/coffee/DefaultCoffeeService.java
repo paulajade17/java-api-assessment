@@ -74,9 +74,9 @@ public class DefaultCoffeeService implements CoffeeService {
         * Used a nested for loop
         */
         for (int i = 0; i < n - 1; i++) {
-            // Inner loop compares and swaps each elements next to each other.
+            // Inner loop compares each elements next to each other.
             for (int j = 0; j < n - i - 1; j++) {
-                // if the price of j is greater than j + 1 then the two elements should be swapped.
+                // if the price of j is greater than j + 1, then the two elements should be swapped.
                 // j + 1 is the next number after j
                 // temp variable has been created to temporarily store j if the statement is true.
                 if (coffeeList.get(j).getPrice() > coffeeList.get(j + 1).getPrice()) {
@@ -123,7 +123,7 @@ public class DefaultCoffeeService implements CoffeeService {
     @Override
     public Coffee createCoffee(Coffee coffee) {
         // Save the provided Coffee object to the repository
-        // and returning the saved instance (which may include generated identifiers)
+        // returns the repository instance
         return repository.save(coffee);
 
     }
@@ -143,10 +143,11 @@ public class DefaultCoffeeService implements CoffeeService {
         Coffee coffee = repository.findById(id);
         // Check if the retrieved coffee is null (not found in the repository)
         if (coffee == null) {
-        // If the coffee is not found, throw an CoffeeNotFoundException with a descriptive message
+        // If the coffee is not found, throw a CoffeeNotFoundException 
             throw new CoffeeNotFoundException("Coffee not found.");
         }
         // Update the properties of the retrieved Coffee object with the values from the updatedCoffee
+        // Using getter and setter methods
         coffee.setName(updatedCoffee.getName());
         coffee.setDescription(updatedCoffee.getDescription());
         coffee.setPrice(updatedCoffee.getPrice());

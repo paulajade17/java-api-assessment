@@ -59,7 +59,7 @@ public class CoffeeTest {
         assertThat(result, is(equalTo(expected)));
     }
 
-    // Am I keeping this code?
+    // Testing method returns a non-empty list of coffees
     @Test
     @DisplayName("size() method returns a non empty list")
     public void getAllCoffees_ReturnsNonEmptyList() {

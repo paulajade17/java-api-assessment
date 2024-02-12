@@ -16,7 +16,7 @@ public interface CoffeeRepository {
      * Find all Coffee entities
      *
      * @return a collection of coffee entities.
-     * @throws PersistenceException if there is an issue with data persistence.
+     * @throws PersistenceException if there is an issue with data storage.
      */
 
 

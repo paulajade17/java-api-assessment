@@ -119,7 +119,7 @@ public class CoffeeController {
         // The method takes in parameter 'id' and 'updateCoffee'
         // The method returns the updated coffee
         Coffee coffee = coffeeService.updateCoffee(id, updatedCoffee);
-        // Checks if updated coffee object returned from updatedCoffee method is null, if it is it means the coffee with the specified ID was not found.
+        // Checks if updated coffee object returned from updatedCoffee method is null, if it is it means the coffee with the specified ID was not found 
         if (coffee == null) {
         // Throw a ResponseStatusException with HTTP status code 404 (NOT_FOUND)
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Coffee not found");
