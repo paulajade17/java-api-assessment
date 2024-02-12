@@ -62,7 +62,7 @@ public class JsonCoffeeRepository implements CoffeeRepository {
             Type type = new TypeToken<Map<UUID, Coffee>>() {
             }.getType();
             // Deserialize allows you to convert JSON strings back into a Java object
-            // Deserialize the JSON data read from the reader and converts it into the in memory map of entities.
+            // Deserialize the JSON data read from the reader and converts it into the in memory map of coffe entities.
             return gson.fromJson(reader, type);
             // catches any IOException that might occur during the file reading process
         } catch (IOException e) {
@@ -73,7 +73,7 @@ public class JsonCoffeeRepository implements CoffeeRepository {
     }
     /**
      * Saves the map to the JSON file.
-     * Attempts to write the contents of the hash map in JSON format to a file specifed by filePath.
+     * Attempts to write the data of the hash map in JSON format to a file specifed by filePath.
      */
     private void saveDataToJson() {
         // try catch block to ensure files are closed properly.
